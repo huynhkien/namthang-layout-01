@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nam Thắng Group – Tiên phong hệ sinh thái giao thông xanh</title>
+<meta name="description" content="Tập đoàn Nam Thắng xây dựng hệ sinh thái đa ngành: taxi điện, xe du lịch, xe máy điện VinFast, dịch vụ 2S và quảng cáo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#0A3B33;      /* xanh rừng đậm – nền chính */
+  --forest-2:#0F4E43;
+  --leaf:#1FA971;        /* xanh lá – điểm nhấn hành động */
+  --mint:#E6F4EC;        /* xanh bạc hà – nền nhạt */
+  --paper:#FAFCFA;
+  --ink:#10201C;
+  --muted:#51645E;
+  --line:#D5E4DC;
+  --sun:#F4B63F;         /* vàng nắng – chỉ dùng điểm nhỏ */
+  --radius:22px;
+  --font:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:var(--font);color:var(--ink);background:var(--paper);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1180px,100% - 48px);margin-inline:auto}
+
+/* ---------- Header ---------- */
+.header{position:sticky;top:0;z-index:50;background:rgba(250,252,250,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:24px}
+.logo img{height:42px;width:auto}
+.logo-fallback{font-weight:800;font-size:20px;color:var(--forest)}
+.nav{display:flex;gap:4px;align-items:center}
+.nav>li{position:relative}
+.nav a.top{display:block;padding:10px 14px;font-weight:600;font-size:15px;border-radius:999px;color:var(--ink);transition:background .2s,color .2s}
+.nav a.top:hover,.nav li:focus-within>a.top{background:var(--mint);color:var(--forest)}
+.nav .sub{position:absolute;top:100%;left:0;min-width:270px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px;box-shadow:0 20px 40px -20px rgba(10,59,51,.35);opacity:0;visibility:hidden;transform:translateY(6px);transition:.2s}
+.nav li:hover .sub,.nav li:focus-within .sub{opacity:1;visibility:visible;transform:none}
+.sub a{display:block;padding:10px 14px;border-radius:10px;font-size:14.5px}
+.sub a:hover{background:var(--mint);color:var(--forest)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:15px;border:2px solid transparent;transition:transform .2s,background .2s,color .2s,border-color .2s;cursor:pointer;font-family:inherit}
+.btn-primary{background:var(--leaf);color:#fff}
+.btn-primary:hover{background:#17935F;transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(255,255,255,.4);color:#fff}
+.btn-ghost:hover{background:#fff;color:var(--forest)}
+.btn-sm{padding:10px 20px;font-size:14px}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:12px;width:44px;height:44px;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:var(--forest);margin:5px auto;border-radius:2px}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;background:var(--forest);color:#fff;overflow:hidden;isolation:isolate}
+.hero .route{position:absolute;inset:0;width:100%;height:100%;z-index:-1;opacity:.9}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:88px 0 150px}
+.hero h1{font-size:clamp(40px,6.2vw,76px);line-height:1.04;font-weight:800;letter-spacing:-.025em}
+.hero h1 span{display:block;color:var(--sun)}
+.hero p.lead{margin-top:26px;font-size:18px;max-width:520px;color:#CFE6DC}
+.hero .cta{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+.hero-photo{position:relative}
+.hero-photo .frame{border-radius:240px 240px 28px 28px;overflow:hidden;aspect-ratio:4/5;background:var(--forest-2);box-shadow:0 40px 80px -30px rgba(0,0,0,.6)}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-photo .badge{position:absolute;left:-28px;bottom:36px;background:#fff;color:var(--ink);border-radius:18px;padding:16px 20px;display:flex;gap:14px;align-items:center;box-shadow:0 20px 40px -16px rgba(0,0,0,.45)}
+.badge .dot{width:44px;height:44px;border-radius:50%;background:var(--mint);display:grid;place-items:center;color:var(--leaf)}
+.badge b{display:block;font-size:15px;line-height:1.3}
+.badge small{color:var(--muted);font-size:13px}
+
+/* ---------- Stats ---------- */
+.stats{position:relative;margin-top:-72px;z-index:2}
+.stats ul{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 30px 60px -36px rgba(10,59,51,.45)}
+.stats li{padding:34px 28px;border-right:1px solid var(--line)}
+.stats li:last-child{border:0}
+.stats strong{display:block;font-size:clamp(34px,4vw,50px);line-height:1;font-weight:800;color:var(--forest);letter-spacing:-.02em}
+.stats strong i{font-style:normal;color:var(--leaf)}
+.stats span{display:block;margin-top:10px;color:var(--muted);font-size:14.5px}
+
+/* ---------- Section base ---------- */
+section{padding:104px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:52px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(30px,4vw,48px);line-height:1.12;font-weight:800;letter-spacing:-.02em;color:var(--forest);max-width:600px}
+.sec-head p{max-width:480px;color:var(--muted)}
+
+/* ---------- Video giới thiệu ---------- */
+.intro-video{padding-bottom:40px}
+.video-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center}
+.video-grid h2{font-size:clamp(30px,4vw,48px);line-height:1.12;font-weight:800;letter-spacing:-.02em;color:var(--forest)}
+.video-grid p{margin-top:18px;color:var(--muted);max-width:44ch}
+.video-grid .links{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.btn-outline{border-color:var(--forest);color:var(--forest)}
+.btn-outline:hover{background:var(--forest);color:#fff}
+.player{position:relative;aspect-ratio:16/9;border-radius:28px;overflow:hidden;background:var(--forest);box-shadow:0 40px 80px -40px rgba(10,59,51,.6)}
+.player img,.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.player .play{position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;background:linear-gradient(to top,rgba(6,32,27,.65),rgba(6,32,27,.1));display:flex;align-items:center;justify-content:center;color:#fff;font-family:inherit}
+.player .play .circle{width:92px;height:92px;border-radius:50%;background:var(--leaf);display:grid;place-items:center;box-shadow:0 0 0 12px rgba(31,169,113,.3);transition:transform .25s,box-shadow .25s}
+.player .play:hover .circle{transform:scale(1.08);box-shadow:0 0 0 18px rgba(31,169,113,.3)}
+.player .play .label{position:absolute;left:28px;bottom:24px;font-weight:700;font-size:15px;display:flex;align-items:center;gap:10px}
+.player .play .label::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sun)}
+
+/* ---------- Ecosystem (bento) ---------- */
+.eco{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.card{position:relative;border-radius:var(--radius);overflow:hidden;background:var(--forest);color:#fff;min-height:300px;display:flex;align-items:flex-end;isolation:isolate}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .6s ease}
+.card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(6,32,27,.92) 8%,rgba(6,32,27,.15) 65%)}
+.card:hover img{transform:scale(1.05)}
+.card .body{padding:26px}
+.card h3{font-size:22px;line-height:1.25;font-weight:700}
+.card p{margin-top:8px;font-size:14.5px;color:#D3E7DE;max-width:46ch}
+.card .more{display:inline-flex;margin-top:14px;font-weight:700;font-size:14px;color:var(--sun);gap:8px;align-items:center}
+.card .more svg{transition:transform .2s}
+.card:hover .more svg{transform:translateX(5px)}
+.c1{grid-column:span 4;min-height:420px}
+.c2{grid-column:span 2}
+.c3{grid-column:span 2}
+.c4{grid-column:span 2}
+.c5{grid-column:span 2}
+.c6{grid-column:span 6;min-height:260px}
+
+/* ---------- Achievements (timeline) ---------- */
+.ach{background:var(--mint)}
+.ach-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:start}
+.ach h2{font-size:clamp(30px,4vw,48px);line-height:1.12;font-weight:800;letter-spacing:-.02em;color:var(--forest)}
+.ach .intro{margin-top:18px;color:var(--muted);max-width:40ch}
+.ach .intro-wrap{position:sticky;top:110px}
+.timeline{position:relative;padding-left:36px}
+.timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--leaf),var(--line))}
+.timeline li{position:relative;padding:0 0 34px}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:"";position:absolute;left:-36px;top:7px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:4px solid var(--leaf)}
+.timeline .year{font-weight:800;font-size:26px;color:var(--forest);line-height:1.2;}
+.timeline p{margin-top:6px;color:#32453F;max-width:56ch}
+.timeline .award{background:#fff;border-radius:18px;padding:22px 24px;border:1px solid var(--line)}
+
+/* ---------- Fields ---------- */
+.fields{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.field{display:flex;gap:18px;align-items:center;padding:30px 24px 30px 0;border-bottom:1px solid var(--line);transition:padding .25s,background .25s}
+.field:nth-child(3n+2),.field:nth-child(3n){padding-left:24px;border-left:1px solid var(--line)}
+.field:hover{background:var(--mint)}
+.field .ico{flex:none;width:56px;height:56px;border-radius:16px;background:var(--forest);color:#fff;display:grid;place-items:center}
+.field h3{font-size:18px;font-weight:700;color:var(--forest)}
+
+/* ---------- Press ---------- */
+.press{background:var(--paper);padding-top:40px}
+.logos{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:48px}
+.logos div{background:#fff;border:1px solid var(--line);border-radius:16px;height:88px;display:grid;place-items:center;padding:14px}
+.logos img{max-height:56px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.75;transition:.25s}
+.logos div:hover img{filter:none;opacity:1}
+.news{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.post{display:flex;flex-direction:column;gap:16px}
+.post .thumb{aspect-ratio:16/10;border-radius:var(--radius);overflow:hidden;background:var(--mint)}
+.post img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.post:hover img{transform:scale(1.05)}
+.post .src{font-size:13px;font-weight:700;color:var(--leaf)}
+.post h3{font-size:18px;line-height:1.4;font-weight:700;color:var(--forest)}
+.post:hover h3{text-decoration:underline;text-underline-offset:4px}
+
+/* ---------- CTA band ---------- */
+.band{padding:0 0 104px}
+.band .box{background:var(--forest);color:#fff;border-radius:32px;padding:64px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;position:relative;overflow:hidden}
+.band .box::after{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;border:48px solid rgba(31,169,113,.25)}
+.band h2{font-size:clamp(26px,3.4vw,40px);line-height:1.15;font-weight:800;max-width:560px;letter-spacing:-.015em}
+.band p{margin-top:12px;color:#CFE6DC;max-width:520px}
+.band .btn{position:relative;z-index:1}
+
+/* ---------- Footer ---------- */
+footer{background:#06251F;color:#B9D2C8;padding:72px 0 28px;font-size:15px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.4fr;gap:44px}
+footer h4{color:#fff;font-size:16px;margin-bottom:16px}
+footer li{margin-bottom:10px}
+footer a:hover{color:#fff}
+.foot .about img{height:44px;width:auto;margin-bottom:18px;}
+.foot .about p{max-width:34ch}
+.social{display:flex;gap:10px;margin-top:20px}
+.social a{border:1px solid rgba(255,255,255,.22);padding:8px 16px;border-radius:999px;font-size:14px;font-weight:600}
+.copy{margin-top:56px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* ---------- Motion: một khoảnh khắc mở đầu ---------- */
+.route path.road{stroke-dasharray:2400;stroke-dashoffset:2400;animation:draw 3.2s .2s cubic-bezier(.6,.05,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero-grid>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero-grid>*:nth-child(2){animation-delay:.15s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .route path.road{stroke-dashoffset:0}
+  html{scroll-behavior:auto}
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .burger{display:block}
+  .nav{position:absolute;top:72px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:12px 24px 24px;border-bottom:1px solid var(--line);display:none;max-height:calc(100vh - 72px);overflow:auto}
+  .nav.open{display:flex}
+  .nav .sub{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0 0 0 12px;min-width:0}
+  .header .btn-sm{display:none}
+  .hero-grid{grid-template-columns:1fr;padding:56px 0 120px;gap:44px}
+  .hero-photo{max-width:420px}
+  .hero-photo .badge{left:12px}
+  .stats ul{grid-template-columns:repeat(2,1fr)}
+  .stats li:nth-child(2){border-right:0}
+  .stats li:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .eco{grid-template-columns:1fr 1fr}
+  .c1,.c6{grid-column:span 2}
+  .c2,.c3,.c4,.c5{grid-column:span 1}
+  .video-grid{grid-template-columns:1fr;gap:36px}
+  .player .play .circle{width:72px;height:72px}
+  .ach-grid{grid-template-columns:1fr;gap:40px}
+  .ach .intro-wrap{position:static}
+  .fields{grid-template-columns:1fr 1fr}
+  .field:nth-child(n){padding-left:0;border-left:0}
+  .field:nth-child(2n){padding-left:24px;border-left:1px solid var(--line)}
+  .logos{grid-template-columns:repeat(2,1fr)}
+  .news{grid-template-columns:1fr 1fr}
+  .foot{grid-template-columns:1fr 1fr}
+  section{padding:80px 0}
+}
+@media (max-width:620px){
+  .wrap{width:calc(100% - 32px)}
+  .eco{grid-template-columns:1fr}
+  .c1,.c2,.c3,.c4,.c5,.c6{grid-column:span 1;min-height:280px}
+  .fields{grid-template-columns:1fr}
+  .field:nth-child(n){padding-left:0;border-left:0}
+  .news{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr}
+  .band .box{padding:40px 28px}
+  .stats li{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- SVG icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  <symbol id="i-bus" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 11h16M8 21v-3M16 21v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="14.5" r=".9" fill="currentColor"/><circle cx="16" cy="14.5" r=".9" fill="currentColor"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 4.9 4.9L21 12.6 12.6 21a2.1 2.1 0 0 1-3-3L18 9.6M14.7 6.3L12 3.6a4 4 0 0 0-4.9 4.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16v-4l2-5h12l2 5v4M4 16h16M4 16v2h3v-2M17 16v2h3v-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="8" cy="13" r=".9" fill="currentColor"/><circle cx="16" cy="13" r=".9" fill="currentColor"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="currentColor"/></symbol>
+</svg>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="wrap">
+    <a class="logo" href="https://namthang.yatame.vn/" aria-label="Nam Thắng Group">
+      <img src="https://namthang.yatame.vn/wp-content/uploads/2026/08/Logo.png" alt="Nam Thắng Group" onerror="this.outerHTML='<span class=logo-fallback>Nam Thắng Group</span>'">
+    </a>
+    <button class="burger" aria-label="Mở menu" aria-expanded="false" id="burger"><span></span><span></span><span></span></button>
+    <ul class="nav" id="nav">
+      <li><a class="top" href="#top">Trang chủ</a></li>
+      <li>
+        <a class="top" href="https://namthang.yatame.vn/ve-nam-thang/">Về Nam Thắng Group</a>
+        <div class="sub">
+          <a href="#">Tầm nhìn sứ mệnh</a>
+          <a href="#">Lịch sử hình thành</a>
+          <a href="#">Giá trị cốt lõi</a>
+          <a href="https://namthang.yatame.vn/gia-tri-con-nguoi-nam-thang/">Giá trị con người Nam Thắng</a>
+        </div>
+      </li>
+      <li>
+        <a class="top" href="#he-sinh-thai">Hệ sinh thái</a>
+        <div class="sub">
+          <a href="https://namthang.yatame.vn/taxi-dien-nam-thang/">Taxi điện Nam Thắng</a>
+          <a href="https://namthang.yatame.vn/nam-thang-travel-bus/">Nam Thắng Travel Bus</a>
+          <a href="https://namthang.yatame.vn/nt-auto/">NT Auto</a>
+          <a href="https://namthang.yatame.vn/xe-may-dien-vinfast-nam-thang-ev-zone/">Nam Thắng EV Zone</a>
+          <a href="https://namthang.yatame.vn/xuong-dich-vu-2s/">Xưởng dịch vụ 2S</a>
+          <a href="https://namthang.yatame.vn/quang-cao-nam-thang/">Quảng cáo Nam Thắng</a>
+        </div>
+      </li>
+      <li><a class="top" href="https://namthang.yatame.vn/tin-tuc-su-kien/">Tin tức sự kiện</a></li>
+      <li><a class="top" href="https://namthang.yatame.vn/tuyen-dung/">Tuyển dụng</a></li>
+    </ul>
+    <a class="btn btn-primary btn-sm" href="#lien-he">Liên hệ</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <!-- Tuyến đường xanh: một chuyển động duy nhất khi tải trang -->
+  <svg class="route" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#1FA971" stop-opacity="0"/><stop offset=".4" stop-color="#1FA971" stop-opacity=".7"/><stop offset="1" stop-color="#F4B63F" stop-opacity=".8"/></linearGradient>
+    </defs>
+    <path id="roadpath" class="road" d="M-40 640 C 220 700, 360 420, 640 480 S 980 700, 1180 420 S 1380 200, 1500 260" fill="none" stroke="url(#rg)" stroke-width="3" stroke-linecap="round" stroke-dasharray="2400"/>
+    <path d="M-40 640 C 220 700, 360 420, 640 480 S 980 700, 1180 420 S 1380 200, 1500 260" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="22" stroke-linecap="round"/>
+    <circle r="7" fill="#F4B63F">
+      <animateMotion dur="9s" begin="1s" repeatCount="indefinite" rotate="auto"><mpath href="#roadpath"/></animateMotion>
+    </circle>
+  </svg>
+
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Tiên phong hệ sinh thái <span>Giao thông xanh</span></h1>
+      <p class="lead">Tập đoàn Nam Thắng xây dựng hệ sinh thái đa ngành, toàn diện và bền vững. Chúng tôi không ngừng đổi mới để mang đến sản phẩm, dịch vụ chất lượng cao cho cộng đồng và khách hàng.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#he-sinh-thai">Khám phá hệ sinh thái <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="https://namthang.yatame.vn/ve-nam-thang/">Về Nam Thắng</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="frame">
+        <img src="https://namthang.yatame.vn/wp-content/uploads/2026/10/Taxi-Nam-Thang-scaled.jpg" alt="Taxi điện Nam Thắng">
+      </div>
+      <div class="badge">
+        <div class="dot"><svg width="22" height="22"><use href="#i-bolt"/></svg></div>
+        <div><b>Taxi điện Nam Thắng</b><small>Có mặt tại 10 tỉnh miền Tây</small></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STATS ===== -->
+<!-- Lưu ý: thay các con số trong data-count bằng số liệu thực tế của tập đoàn -->
+<div class="stats">
+  <div class="wrap">
+    <ul>
+      <li><strong><span data-count="15">15</span><i>+</i></strong><span>Năm hình thành<br>và phát triển</span></li>
+      <li><strong><span data-count="1000">1000</span><i>+</i></strong><span>Nhân viên<br>toàn hệ thống</span></li>
+      <li><strong><span data-count="500">500</span><i>+</i></strong><span>Phương tiện<br>đang vận hành</span></li>
+      <li><strong><span data-count="10">10</span><i>+</i></strong><span>Tỉnh thành<br>phục vụ</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== VIDEO GIỚI THIỆU =====
+     Dán ID video YouTube vào data-video-id (ví dụ link https://www.youtube.com/watch?v=ABC123xyz thì ID là ABC123xyz).
+     Nếu để trống, nút phát sẽ mở kênh YouTube của Nam Thắng. -->
+<section class="intro-video">
+  <div class="wrap video-grid">
+    <div>
+      <h2>Video giới thiệu Nam Thắng Group</h2>
+      <p>Xem cách Nam Thắng xây dựng hệ sinh thái giao thông xanh, từ taxi điện, xe du lịch đến xe máy điện và dịch vụ chăm sóc xe VinFast.</p>
+      <div class="links">
+        <a class="btn btn-primary" href="https://namthang.yatame.vn/ve-nam-thang/">Về Nam Thắng <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-outline" href="https://www.youtube.com/@namthanggroup5444" target="_blank" rel="noopener">Kênh YouTube</a>
+      </div>
+    </div>
+    <div class="player" id="player" data-video-id="">
+      <img src="https://namthang.yatame.vn/wp-content/uploads/2026/08/NTG00074-1024x706.jpg" alt="" loading="lazy">
+      <button class="play" id="playBtn" aria-label="Phát video giới thiệu Nam Thắng Group">
+        <span class="circle"><svg width="34" height="34" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.5-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5z"/></svg></span>
+        <span class="label">Giới thiệu Tập đoàn Nam Thắng</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HỆ SINH THÁI ===== -->
+<section id="he-sinh-thai">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Một hệ sinh thái, trọn hành trình di chuyển</h2>
+      <p>Từ vận tải, du lịch đến thương mại và hậu mãi, các dịch vụ của Nam Thắng kết nối với nhau để đáp ứng trọn vẹn nhu cầu của khách hàng trên mỗi hành trình.</p>
+    </div>
+    <div class="eco">
+      <a class="card c1" href="https://namthang.yatame.vn/taxi-dien-nam-thang/">
+        <img src="https://namthang.yatame.vn/wp-content/uploads/2026/10/Taxi-Nam-Thang-scaled.jpg" alt="" loading="lazy">
+        <div class="body"><h3>Taxi điện Nam Thắng</h3><p>Có mặt tại 10 tỉnh miền Tây. Giải pháp di chuyển bằng xe điện an toàn, thuận tiện và thân thiện với môi trường.</p><span class="more">Xem chi tiết <svg width="16" height="16"><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a class="card c2" href="https://namthang.yatame.vn/nam-thang-travel-bus/">
+        <img src="https://namthang.yatame.vn/wp-content/uploads/2026/10/travel-bus-1024x683.jpg" alt="" loading="lazy">
+        <div class="body"><h3>Nam Thắng Travel Bus</h3><p>Xe du lịch chất lượng cao cho cá nhân, gia đình, doanh nghiệp và tour đoàn.</p><span class="more">Xem chi tiết <svg width="16" height="16"><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a class="card c3" href="https://namthang.yatame.vn/nt-auto/">
+        <img src="https://namthang.yatame.vn/wp-content/uploads/2026/10/NT_AUTO-1024x683.jpg" alt="" loading="lazy">
+        <div class="body"><h3>NT Auto</h3><p>Giải pháp sở hữu xe minh bạch, thuận tiện và phù hợp nhu cầu thực tế.</p><span class="more">Xem chi tiết <svg width="16" height="16"><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a class="card c4" href="https://namthang.yatame.vn/xe-may-dien-vinfast-nam-thang-ev-zone/">
+        <img src="https://namthang.yatame.vn/wp-content/uploads/2026/08/706727860_122113607360809544_5920138026536128420_n-1024x683.jpg" alt="" loading="lazy">
+        <div class="body"><h3>Nam Thắng EV Zone</h3><p>Showroom xe máy điện VinFast để lựa chọn, trải nghiệm và sở hữu.</p><span class="more">Xem chi tiết <svg width="16" height="16"><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a class="card c5" href="https://namthang.yatame.vn/xuong-dich-vu-2s/">
+        <img src="https://namthang.yatame.vn/wp-content/uploads/2026/10/VFNT-2-1024x768.jpg" alt="" loading="lazy">
+        <div class="body"><h3>Xưởng dịch vụ 2S VinFast</h3><p>Bảo dưỡng, sửa chữa và chăm sóc xe VinFast suốt quá trình sử dụng.</p><span class="more">Xem chi tiết <svg width="16" height="16"><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a class="card c6" href="https://namthang.yatame.vn/quang-cao-nam-thang/">
+        <img src="https://namthang.yatame.vn/wp-content/uploads/2026/08/NTG00074-1024x706.jpg" alt="" loading="lazy">
+        <div class="body"><h3>Quảng cáo trên xe taxi NT</h3><p>Đưa thương hiệu của bạn đến gần hơn với khách hàng trên những hành trình thực tế của hệ thống taxi Nam Thắng.</p><span class="more">Xem chi tiết <svg width="16" height="16"><use href="#i-arrow"/></svg></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THÀNH TỰU ===== -->
+<section class="ach">
+  <div class="wrap ach-grid">
+    <div class="intro-wrap">
+      <h2>Kiến tạo giá trị, được ghi nhận qua từng năm</h2>
+      <p class="intro">Những giải thưởng và danh hiệu là minh chứng cho chất lượng dịch vụ và cam kết của Nam Thắng với khách hàng, cộng đồng.</p>
+    </div>
+    <ul class="timeline">
+      <li><div class="year">2014</div><p>Đạt Top 100 dịch vụ chất lượng.</p></li>
+      <li><div class="year">2014 – 2015</div><p>Hai năm liền lọt Top 10 “Thương hiệu uy tín – Sản phẩm chất lượng – Dịch vụ uy tín” do Liên hiệp Khoa học Phát triển Doanh nghiệp Việt Nam phối hợp Thương hiệu Việt Nam trao giải.</p></li>
+      <li><div class="year">2015</div><p>Taxi Phú Quốc nhận giải “Doanh nghiệp, doanh nhân tiêu biểu vì sự phát triển cộng đồng”.</p></li>
+      <li><div class="year">2022</div>
+        <div class="award" style="margin-top:10px"><p style="margin:0">Top 10 Doanh nghiệp dẫn đầu Việt Nam.</p><p>Ông Trần Bá Thắng, Chủ tịch HĐQT Tập đoàn Nam Thắng, được vinh danh “Nhà lãnh đạo xuất sắc châu Á” tại lễ trao giải Thương hiệu xuất sắc châu Á.</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== LĨNH VỰC ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Lĩnh vực hoạt động</h2>
+      <p>Nam Thắng tập trung phát triển các lĩnh vực gắn liền với nhu cầu di chuyển, du lịch, dịch vụ và đời sống.</p>
+    </div>
+    <div class="fields">
+      <div class="field"><div class="ico"><svg width="26" height="26"><use href="#i-home"/></svg></div><h3>Bất động sản</h3></div>
+      <div class="field"><div class="ico"><svg width="26" height="26"><use href="#i-bus"/></svg></div><h3>Vận tải hành khách</h3></div>
+      <div class="field"><div class="ico"><svg width="26" height="26"><use href="#i-wrench"/></svg></div><h3>Dịch vụ bảo dưỡng</h3></div>
+      <div class="field"><div class="ico"><svg width="26" height="26"><use href="#i-map"/></svg></div><h3>Tour du lịch</h3></div>
+      <div class="field"><div class="ico"><svg width="26" height="26"><use href="#i-bag"/></svg></div><h3>Thương mại</h3></div>
+      <div class="field"><div class="ico"><svg width="26" height="26"><use href="#i-car"/></svg></div><h3>Dịch vụ di chuyển</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BÁO CHÍ ===== -->
+<section class="press">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Báo chí nói gì về chúng tôi</h2>
+      <p>Những dấu ấn, hoạt động và câu chuyện của Nam Thắng được ghi nhận trên các cơ quan báo chí và truyền thông.</p>
+    </div>
+    <div class="logos">
+      <div><img src="https://namthang.yatame.vn/wp-content/uploads/2026/08/logo-tuoitre.jpg" alt="Tuổi Trẻ" loading="lazy"></div>
+      <div><img src="https://namthang.yatame.vn/wp-content/uploads/2026/08/logo-dantri.jpg" alt="Dân Trí" loading="lazy"></div>
+      <div><img src="https://namthang.yatame.vn/wp-content/uploads/2026/08/logo-vnex.jpg" alt="VnExpress" loading="lazy"></div>
+      <div><img src="https://namthang.yatame.vn/wp-content/uploads/2026/08/logo-doisong.jpg" alt="Đời sống & Pháp luật" loading="lazy"></div>
+    </div>
+    <div class="news">
+      <a class="post" href="https://baoxaydung.vn/taxi-nam-thang-thuong-hieu-noi-tieng-trong-van-tai-hanh-khach-tai-phu-quoc-192513233.htm" target="_blank" rel="noopener">
+        <div class="thumb"><img src="https://namthang.yatame.vn/wp-content/uploads/2026/08/img-bgt-2021-doi-ngu-tai-xe-than-thien-voi-khach-hang-1624581729-width1280height720.webp" alt="" loading="lazy"></div>
+        <span class="src">Báo Xây Dựng</span>
+        <h3>Taxi Nam Thắng – Thương hiệu nổi tiếng trong vận tải hành khách tại Phú Quốc</h3>
+      </a>
+      <a class="post" href="https://doisongphapluat.com.vn/tap-doan-nam-thang-chu-trong-cham-lo-doi-song-nhan-vien-a505395.html" target="_blank" rel="noopener">
+        <div class="thumb"><img src="https://namthang.yatame.vn/wp-content/uploads/2026/08/zz3-1024x740.jpg" alt="" loading="lazy"></div>
+        <span class="src">Đời sống pháp luật</span>
+        <h3>“ATM gạo” đầu tiên ở Kiên Giang hỗ trợ người nghèo với 30 tấn gạo dự trữ</h3>
+      </a>
+      <a class="post" href="https://dantri.com.vn/kinh-doanh/nam-thang-group-phat-hanh-trai-phieu-de-phat-trien-kinh-doanh-20210702134215337.htm" target="_blank" rel="noopener">
+        <div class="thumb"><img src="https://namthang.yatame.vn/wp-content/uploads/2026/08/bao-dantricomvnpr180207finaldocx-1625207953778-1024x767.webp" alt="" loading="lazy"></div>
+        <span class="src">Báo Dân Trí</span>
+        <h3>Nam Thắng Group phát hành trái phiếu để phát triển kinh doanh</h3>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<div class="band">
+  <div class="wrap">
+    <div class="box">
+      <div>
+        <h2>Cùng Nam Thắng kiến tạo một tương lai xanh</h2>
+        <p>Liên hệ để hợp tác, đặt xe hoặc tìm hiểu cơ hội nghề nghiệp trong hệ sinh thái Nam Thắng.</p>
+      </div>
+      <a class="btn btn-primary" href="#lien-he">Liên hệ ngay <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer id="lien-he">
+  <div class="wrap">
+    <div class="foot">
+      <div class="about">
+        <img src="https://namthang.yatame.vn/wp-content/uploads/2026/08/Logo.png" alt="Nam Thắng Group" >
+        <p>Với định hướng phát triển bền vững, Nam Thắng Group không ngừng đổi mới, kiến tạo giá trị và góp phần xây dựng một tương lai xanh.</p>
+        <div class="social">
+          <a href="https://www.facebook.com/tapdoannamthang" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.youtube.com/@namthanggroup5444" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+      <div>
+        <h4>Về chúng tôi</h4>
+        <ul>
+          <li><a href="#">Lịch sử phát triển</a></li>
+          <li><a href="#">Tầm nhìn &amp; Sứ mệnh</a></li>
+          <li><a href="#">Giải thưởng</a></li>
+          <li><a href="https://namthang.yatame.vn/gia-tri-con-nguoi-nam-thang/">Giá trị con người</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hệ sinh thái</h4>
+        <ul>
+          <li><a href="https://namthang.yatame.vn/taxi-dien-nam-thang/">Taxi điện Nam Thắng</a></li>
+          <li><a href="https://namthang.yatame.vn/nam-thang-travel-bus/">Nam Thắng Travel Bus</a></li>
+          <li><a href="https://namthang.yatame.vn/xe-may-dien-vinfast-nam-thang-ev-zone/">Nam Thắng EV Zone</a></li>
+          <li><a href="https://namthang.yatame.vn/xuong-dich-vu-2s/">Xưởng dịch vụ 2S</a></li>
+          <li><a href="https://namthang.yatame.vn/quang-cao-nam-thang/">Quảng cáo Nam Thắng</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Liên hệ</h4>
+        <ul>
+          <li><b style="color:#fff">Trụ sở chính:</b> Đường số 3 (KVBX tỉnh Kiên Giang), ấp Sua Đũa, xã Bình An, An Giang</li>
+          <li><b style="color:#fff">Email:</b> <a href="mailto:namthanggroup2021@gmail.com">namthanggroup2021@gmail.com</a></li>
+          <li><b style="color:#fff">Điện thoại:</b> <a href="tel:02973651666">02973 651 666</a> – <a href="tel:0949270022">0949 270 022</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy"><span>© 2026 Nam Thắng Group. All rights reserved.</span></div>
+  </div>
+</footer>
+
+<script>
+// Menu di động
+const burger=document.getElementById('burger'),nav=document.getElementById('nav');
+burger.addEventListener('click',()=>{const o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');burger.setAttribute('aria-expanded',false)}));
+
+// Phát video: chỉ tải YouTube khi người xem bấm nút
+const player=document.getElementById('player'),playBtn=document.getElementById('playBtn');
+playBtn.addEventListener('click',()=>{
+  const id=player.dataset.videoId.trim();
+  if(!id){window.open('https://www.youtube.com/@namthanggroup5444','_blank','noopener');return}
+  player.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+encodeURIComponent(id)+'?autoplay=1&rel=0" title="Video giới thiệu Nam Thắng Group" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+});
+
+// Đếm số khi cuộn tới (chạy một lần)
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const counters=document.querySelectorAll('[data-count]');
+if(!reduce && 'IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const el=e.target,end=+el.dataset.count,t0=performance.now(),d=1400;
+    const step=t=>{const p=Math.min((t-t0)/d,1),v=Math.round(end*(1-Math.pow(1-p,3)));
+      el.textContent=v.toLocaleString('vi-VN');if(p<1)requestAnimationFrame(step)};
+    requestAnimationFrame(step);io.unobserve(el);
+  })},{threshold:.6});
+  counters.forEach(c=>{c.textContent='0';io.observe(c)});
+}
+</script>
+</body>
+</html>
